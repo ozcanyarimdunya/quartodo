@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">Todo Operation</div>
+  <div class="card-body">
+    <form method="post">
+      <div class="input-group mb-3">
+        {% if todo %}
+        <input type="text" name="name" class="form-control" placeholder="Todo .." aria-label="Todo .."
+               aria-describedby="btn-submit" value="{{todo.name}}">
+        {% else %}
+        <input type="text" name="name" class="form-control" placeholder="Todo .." aria-label="Todo .."
+               aria-describedby="btn-submit">
+        {% endif %}
+        <button class="btn btn-outline-primary" type="submit" id="btn-submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

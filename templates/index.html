@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    List of Todos
+    <a href="/create/" class="btn btn-sm btn-outline-dark float-end">Create New Todo</a>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <tbody>
+      {% for todo in todos %}
+      <tr>
+        <td>{{ todo.name }}</td>
+        <td class="text-end">
+          <div class="btn-group btn-group-sm btn-group-primary" role="group" aria-label="Actions">
+            {% if todo.is_completed %}
+            <a href="/toggle/{{ todo.pk }}/" class="btn btn-outline-warning">Incomplete</a>
+            {% else %}
+            <a href="/toggle/{{ todo.pk }}/" class="btn btn-outline-success">Complete</a>
+            {% endif %}
+
+            <a href="/edit/{{ todo.pk }}/" class="btn btn-outline-primary">Edit</a>
+            <a href="/delete/{{ todo.pk }}/" class="btn btn-outline-danger">Delete</a>
+          </div>
+        </td>
+      </tr>
+      {% else %}
+      <tr class="text-center">
+        <td>No todo!</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
